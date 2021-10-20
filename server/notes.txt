@@ -1,9 +1,0 @@
-
---> Convert Stream to HLS
-./server/libs/ffmpeg -i rtsp://admin:aabb1122@172.31.31.13:8554/live -fflags flush_packets -max_delay 5 -flags -global_header -hls_time 5 -hls_list_size 3 -vcodec copy -y ./server/libs/video/ipcam/index.m3u8
-
---> Remove excess .ts files
-./server/node_modules/.bin/nodemon ./server/cleaner.js
-
--->Serve the hls (m3u8) files
-./server/node_modules/.bin/nodemon ./server/hls-server.js
