@@ -7,7 +7,12 @@ function App() {
     <div className="App">
       <h1>RTSP Camera Streaming</h1>
       URL : http://localhost:4000/index.m3u8
-      <ReactPlayer url='http://localhost:4000/index.m3u8' playing={true} />
+      <ReactPlayer
+      width='960px'
+      height='480px' 
+      controls 
+      url='http://localhost:4000/index.m3u8' 
+      playing={true} />
     </div>
   );
 }
