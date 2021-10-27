@@ -18,12 +18,12 @@ const Login = (props) => {
             <div className="loginContainer">
                 <label>Username</label>
                 <input 
-                type="text" 
-                autoFocus 
-                required 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
+                    type="text" 
+                    autoFocus 
+                    required 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
                 <p className="errorMsg">{emailError}</p>
                 <label>Password</label>
                 <input 

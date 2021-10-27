@@ -6,9 +6,9 @@ import React , { useState, useEffect } from 'react'
 
 
 
-function App() {
+const App = () => {
   const [user, setUser] = useState('');
-  const[email, setEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -81,12 +81,11 @@ function App() {
   }, [])
 
   return (
-    <>
-      <div className="App">
-        {user ? (
-          <Hero handleLogout={handleLogout}/>
-        ): (
-          <Login 
+    <div className="App">
+      {user ? (
+        <Hero handleLogout={handleLogout}/>
+      ) : (
+        <Login 
           email={email} 
           setEmail={setEmail} 
           password={password}
@@ -97,11 +96,10 @@ function App() {
           setHasAccount={setHasAccount}
           emailError={emailError}
           passwordError={passwordError}
-          />
-        )}  
-      </div>
-    </>
+        />
+      )}  
+    </div>
     );
-  }
+}
 
 export default App;
