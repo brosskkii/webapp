@@ -1,9 +1,8 @@
 import './App.css';
-import fire from './firebase'
-import Login from './Login';
-import Hero from './Hero';
-import React , { useState, useEffect } from 'react'
-
+import fire from './components/firebase'
+import Login from './Pages/Login';
+import Hero from './Pages/Hero';
+import React , { useState, useEffect } from 'react';
 
 
 const App = () => {
@@ -40,7 +39,7 @@ const App = () => {
             setPasswordError(err.meessage);
             break;
         }
-      })
+      });
   };
   
   const handleSignup = () => {
@@ -58,7 +57,7 @@ const App = () => {
             setPasswordError(err.meessage);
             break;
         }
-      })
+      });
   };
 
   const handleLogout = () => {
@@ -66,7 +65,7 @@ const App = () => {
   };
 
   const authListener = () => {
-    fire.auth().onAuthStateChanged(user => {
+    fire.auth().onAuthStateChanged((user) => {
       if(user){
         clearInputs();
         setUser(user);
