@@ -1,104 +1,39 @@
-import './App.css';
-import fire from './components/firebase'
+import React from 'react'
+import Signup from './Pages/Signup';
+import { Container } from 'react-bootstrap';
+import { AuthProvider } from './contexts/AuthContext';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Dashboard from './Pages/Dashboard';
+import PrivateRoute from './Pages/PrivateRoute.js';
+import ForgotPassword from './Pages/ForgotPassword';
+import UpdateProfile from './Pages/UpdateProfile';
 import Login from './Pages/Login';
-import Hero from './Pages/Hero';
-import React , { useState, useEffect } from 'react';
+///import Switch from 'react-bootstrap/esm/Switch';
+import server1 from './Pages/server1';
 
 
-const App = () => {
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [hasAccount, setHasAccount] = useState(false);
-
-  const clearInputs = () => {
-    setEmail('');
-    setPassword('');
-  }
-
-  const clearErrors = () => {
-    setEmailError('');
-    setPasswordError('');
-  }
-
-  const handleLogin = () => {
-    clearErrors();
-    fire
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .catch(err => {
-        switch (err.code) {
-          case "auth/invalid-email":
-          case "auth/user-disabled":
-          case "auth/user-not-found":
-            setEmailError(err.message);
-            break;
-          case "auth/wrong-password":
-            setPasswordError(err.meessage);
-            break;
-        }
-      });
-  };
-  
-  const handleSignup = () => {
-    clearErrors();
-    fire
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .catch(err => {
-        switch (err.code) {
-          case "auth/email-already-in-use":
-          case "auth/email-invalid":
-            setEmailError(err.message);
-            break;
-          case "auth/weak-password":
-            setPasswordError(err.meessage);
-            break;
-        }
-      });
-  };
-
-  const handleLogout = () => {
-    fire.auth().signOut();
-  };
-
-  const authListener = () => {
-    fire.auth().onAuthStateChanged((user) => {
-      if(user){
-        clearInputs();
-        setUser(user);
-      } else {
-        setUser("");
-      }
-    });
-  };
-
-  useEffect(() => {
-    authListener();
-  }, [])
-
+function App() {
   return (
-    <div className="App">
-      {user ? (
-        <Hero handleLogout={handleLogout}/>
-      ) : (
-        <Login 
-          email={email} 
-          setEmail={setEmail} 
-          password={password}
-          setPassword={setPassword}
-          handleLogin={handleLogin}
-          handleSignup={handleSignup}
-          hasAccount={hasAccount}
-          setHasAccount={setHasAccount}
-          emailError={emailError}
-          passwordError={passwordError}
-        />
-      )}  
-    </div>
-    );
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >
+      <div className="w-100" style={{ maxWidth: "400px" }}>
+        <Router>
+          <AuthProvider>
+            <Switch>
+              <PrivateRoute exact path="/" component={Dashboard} />
+              <PrivateRoute path="/update-profile" component={UpdateProfile} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
+              <Route path="server1" component={server1}/>
+              <Route path="/forgot-password" component={ForgotPassword} />
+            </Switch>
+          </AuthProvider>
+        </Router>
+      </div>
+    </Container>
+  )
 }
 
-export default App;
+export default App
