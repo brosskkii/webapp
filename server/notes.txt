@@ -4,7 +4,7 @@ GENERIC
 ./server/libs/ffmpeg -i rtsp://{userID}:{PASSWORD}@IP:8554/live -fflags flush_packets -max_delay 5 -flags -global_header -hls_time 5 -hls_list_size 3 -vcodec copy -y ./server/libs/video/ipcam/index.m3u8
 
 MINE
-./server/libs/ffmpeg -i rtsp://admin:aabb1122@172.17.56.143:8554/live -fflags flush_packets -max_delay 5 -flags -global_header -hls_time 5 -hls_list_size 3 -vcodec copy -y ./server/libs/video/ipcam/index.m3u8
+./server/libs/ffmpeg -i rtsp://admin:aabb1122@172.31.31.221:8554/live -fflags flush_packets -max_delay 5 -flags -global_header -hls_time 5 -hls_list_size 3 -vcodec copy -y ./server/libs/video/ipcam/index.m3u8
 
 --> Remove excess .ts files
 ./server/node_modules/.bin/nodemon ./server/cleaner.js

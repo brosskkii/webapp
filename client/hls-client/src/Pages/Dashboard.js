@@ -29,10 +29,10 @@ export default function Dashboard() {
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
             Update Profile
           </Link>
-          <Link to="/server1" className="btn btn-primary w-100 mt-3">
+          <Link to="/server-1" className="btn btn-info w-100 mt-3">
               Sever 1
           </Link>
-          <Link to="/server2" className="btn btn-primary w-100 mt-3">
+          <Link to="/server-2" className="btn btn-info w-100 mt-3">
               Sever 2
           </Link>
         </Card.Body>

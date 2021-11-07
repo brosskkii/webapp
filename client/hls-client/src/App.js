@@ -8,8 +8,7 @@ import PrivateRoute from './Pages/PrivateRoute.js';
 import ForgotPassword from './Pages/ForgotPassword';
 import UpdateProfile from './Pages/UpdateProfile';
 import Login from './Pages/Login';
-///import Switch from 'react-bootstrap/esm/Switch';
-import server1 from './Pages/server1';
+import Server1 from './Pages/Server1';
 
 
 function App() {
@@ -24,9 +23,9 @@ function App() {
             <Switch>
               <PrivateRoute exact path="/" component={Dashboard} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
+              <Route path="/server-1" component={Server1}/>
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
-              <Route path="server1" component={server1}/>
               <Route path="/forgot-password" component={ForgotPassword} />
             </Switch>
           </AuthProvider>
