@@ -1,8 +1,8 @@
 import React from "react";
 import ReactPlayer from 'react-player'
 
-export default function server1 () {
-
+export default function Server1() {
+    
     return(
         <div>
             <h1>RTSP Camera Streaming</h1>
