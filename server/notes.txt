@@ -11,3 +11,6 @@ MINE
 
 -->Serve the hls (m3u8) files
 ./server/node_modules/.bin/nodemon ./server/hls-server.js 
+
+--> URL Link
+http://localhost:4000/index.m3u8
